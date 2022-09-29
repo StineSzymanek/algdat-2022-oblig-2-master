@@ -262,6 +262,9 @@ class Oblig2Test {
             System.out.println("Oppgave 2n: Dette (" + tid + " ms) gikk altfor sakte!");
             System.out.println("            Har du kodet toString slik det ble bedt om?");
         }
+
+        assertEquals(0, antallFeil, "Du har for mange feil i oppgave 2");
+
     }
 
     ////// Oppgave 3 /////////////////////
