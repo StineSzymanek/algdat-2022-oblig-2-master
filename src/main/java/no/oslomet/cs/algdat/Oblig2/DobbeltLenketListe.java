@@ -47,16 +47,43 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         this();     // nullstiller variablene
 
         Objects.requireNonNull(a, "Tabellen a er null!");
+        if(a.length == 0) return;       // tom liste
 
-        Node<T> p = hode = new Node<>(a[0]);
-        Node<T> q = p.neste = new Node<>(a[1]);
-        antall = 2;
-        for(int i = 2; i < a.length; i++) {
-            q.forrige = p;
-            q.neste = new Node<>(a[i]);
-            p = q;
-            q = q.neste;
-            antall++;
+        int indeks = 0;
+        Node<T> p = null;
+        // Finner den første som ikke er null
+        for(; indeks < a.length; indeks++) {
+            if(a[indeks] != null) {
+                p = hode = new Node<>(a[indeks]);
+                antall = 1;
+                break;
+            }
+        }
+        if(p == null) return;      // ingen verdi som ikke er null, tom liste
+
+        int indeks2 = indeks + 1;
+        Node<T> q = null;
+        // Finner den neste som ikke er null
+        for(; indeks2 < a.length; indeks2++) {
+            if(a[indeks2] != null) {
+                q = p.neste = new Node<>(a[indeks2]);
+                antall++;
+                break;
+            }
+        }
+        if(q == null) {     // kun en verdi i listen som ikke er null
+            hode = hale = p;
+            return;
+        }
+
+        for(int i = indeks2+1; i < a.length; i++) {
+            if(a[i] != null) {
+                q.forrige = p;
+                q.neste = new Node<>(a[i]);
+                p = q;
+                q = q.neste;
+                antall++;
+            }
         }
         q.forrige = p;
         hale = q;
