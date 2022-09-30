@@ -167,6 +167,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
+        /*
+         Lag  så  metoden boolean  inneholder(T  verdi).  Den  skal  returnere  true  hvis
+listen  inneholder verdi og  returnere  false  ellers.  Her  lønner  det  seg  å  bruke  et  kall  på
+metoden indeksTil som en del av koden.
+         */
+        // Hvis kall på indeksTil(verdi) gir -1, så returneres false
+        // Hvis ikke returneres true
         throw new UnsupportedOperationException();
     }
 
@@ -200,9 +207,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 den  finnes  i  listen  og  returnere  -1  hvis  den  ikke  finnes.  Her  skal  det  ikke  kastes  unntak
 hvis verdi er null. Metoden skal isteden returnere -1. Det er logisk siden null ikke finnes i
 listen. Hvis verdi forekommer flere ganger, skal indeksen til den første av dem (fra venstre)
-returneres.  Lag  så  metoden boolean  inneholder(T  verdi).  Den  skal  returnere  true  hvis
-listen  inneholder verdi og  returnere  false  ellers.  Her  lønner  det  seg  å  bruke  et  kall  på
-metoden indeksTil som en del av koden.
+returneres.
          */
 
         Node<T> p = hode;
