@@ -195,6 +195,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
+        /*
+        Lag metoden int indeksTil(T verdi). Den skal returnere indeksen/posisjonen til verdi hvis
+den  finnes  i  listen  og  returnere  -1  hvis  den  ikke  finnes.  Her  skal  det  ikke  kastes  unntak
+hvis verdi er null. Metoden skal isteden returnere -1. Det er logisk siden null ikke finnes i
+listen. Hvis verdi forekommer flere ganger, skal indeksen til den første av dem (fra venstre)
+returneres.  Lag  så  metoden boolean  inneholder(T  verdi).  Den  skal  returnere  true  hvis
+listen  inneholder verdi og  returnere  false  ellers.  Her  lønner  det  seg  å  bruke  et  kall  på
+metoden indeksTil som en del av koden.
+         */
+
+        // Bruker en for-løkke til å gå gjennom nodene
+        // Hvis noden sin verdi er lik verdien, så returneres indeksen
+        // Hvis ingen treffer, så returneres -1
         throw new UnsupportedOperationException();
     }
 
