@@ -205,10 +205,14 @@ listen  inneholder verdi og  returnere  false  ellers.  Her  lønner  det  seg  
 metoden indeksTil som en del av koden.
          */
 
-        // Bruker en for-løkke til å gå gjennom nodene
-        // Hvis noden sin verdi er lik verdien, så returneres indeksen
-        // Hvis ingen treffer, så returneres -1
-        throw new UnsupportedOperationException();
+        Node<T> p = hode;
+        for(int i = 0; i < antall; i++) {
+            if(p.verdi == verdi) {      // Hvis noden sin verdi er lik verdien, så returneres indeksen
+                return i;
+            }
+            p = p.neste;
+        }
+        return -1;      // Hvis ingen treffer, så returneres -1
     }
 
     @Override
