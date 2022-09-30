@@ -134,23 +134,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     private Node<T> finnNode(int indeks) {
         if(indeks < antall/2) {
             Node<T> p = hode;
-            for(int i = 0; i < antall; i++) {
-                if(i == indeks) {
-                    return p;
-                }
+            for(int i = 0; i < indeks; i++) {
                 p = p.neste;
             }
+            return p;
         }
         else {
             Node<T> p = hale;
-            for(int i = antall-1; i >= 0; i--) {
-                if(i == indeks) {
-                    return p;
-                }
+            for(int i = antall-1; i > indeks; i--) {
                 p = p.forrige;
             }
+            return p;
         }
-        return null;        // indeksen er ikke i lista
     }
 
     @Override
