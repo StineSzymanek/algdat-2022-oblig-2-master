@@ -105,7 +105,31 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til) {
-        throw new UnsupportedOperationException();
+        fratilKontroll(antall,fra,til);     // sjekker om indeksene fra og til er lovlige
+
+        DobbeltLenketListe<T> liste = new DobbeltLenketListe<>();
+
+        if(fra == til) {        // tomt intervall
+            liste.hode = liste.hale = null;
+            liste.antall = 0;
+            liste.endringer = 0;
+            return liste;
+        }
+
+        Node<T> p = hode;
+        int i = 0;
+        for(; i < fra; i++) {      // finner noden på posisjonen "fra", som er hode i subliste
+            p = p.neste;
+        }
+        liste.leggInn(p.verdi);
+
+        for(; i < til - 1; i++) {       // legger inn noder fram til, men ikke med, "til"
+            p = p.neste;
+            liste.leggInn(p.verdi);
+        }
+        liste.endringer = 0;
+
+        return liste;
     }
 
     @Override
