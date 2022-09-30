@@ -97,7 +97,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if (til > antall)                          // til er utenfor tabellen
             throw new IndexOutOfBoundsException
-                    ("til(" + til + ") > tablengde(" + antall + ")");
+                    ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
             throw new IllegalArgumentException
@@ -200,7 +200,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     public int indeksTil(T verdi) {
         Node<T> p = hode;
         for(int i = 0; i < antall; i++) {
-            if(p.verdi == verdi) {      // Hvis noden sin verdi er lik verdien, så returneres indeksen
+            if(p.verdi.equals(verdi)) {      // Hvis noden sin verdi er lik verdien, så returneres indeksen
                 return i;
             }
             p = p.neste;
