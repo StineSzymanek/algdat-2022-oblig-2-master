@@ -162,25 +162,43 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) {
-        /*
-        Lag metoden void leggInn(int indeks, T verdi). Den skal legge verdi inn i listen slik at
-den  får  indeks/posisjon indeks.  Husk  at  negative  indekser  og  indekser større  enn  antall  er
-ulovlige  (indekser  fra  og  med  0  til  og  med  antall  er  lovlige).  Her  må  du  passe  på  de  fire
-tilfellene 1) listen er tom, 2) verdien skal legges først, 3) verdien skal legges bakerst og 4)
-verdien skal legges mellom to andre verdier. Sørg for at neste- og forrige-pekere får korrekte
-verdier i alle noder. Spesielt skal forrige-peker i den første noden være null og neste-peker i
-den siste noden være null.
-         */
+        Objects.requireNonNull(verdi, "Null kan ikke legges inn i lista");
 
-        // Krever ikke-null av verdi
-        // Sjekker indeks - indeks >= 0 && indeks <= antall
-        // Oppretter ny node med verdi
-        // Listen er tom - hode = hale = nyNode
-        // Verdien skal legges først - indeks == 0
-        // Verdien skal legges bakerst - indeks = antall, bruk leggInn(T verdi)
-        // Ellers -> verdien skal legges mellom to verdier
-            // finnNode(indeks) og // finnNode(indeks-1) for å finne nodene den nye skal være mellom
-        throw new UnsupportedOperationException();
+        // Sjekker indeks
+        if(!(indeks >= 0 && indeks <= antall)) {
+            throw new IndexOutOfBoundsException("Ikke gyldig indeks");
+        }
+
+        Node<T> nyNode = new Node<>(verdi);
+
+        if(tom()) {
+            hode = hale = nyNode;
+        }
+
+        else if(indeks == 0) {      // Verdien skal legges først
+            hode.forrige = nyNode;
+            nyNode.neste = hode;
+            hode = nyNode;
+        }
+
+        else if(indeks == antall) {     // Verdien skal legges bakerst
+            hale.neste = nyNode;
+            nyNode.forrige = hale;
+            hale = nyNode;
+        }
+
+        else {      // Verdien skal legges mellom to verdier
+            // Finn nodene den nye skal være mellom
+            Node<T> p = finnNode(indeks);
+            Node<T> q = finnNode(indeks-1);
+
+            p.forrige = nyNode;
+            q.neste = nyNode;
+            nyNode.forrige = q;
+            nyNode.neste = p;
+        }
+        antall++;
+        endringer++;
     }
 
     @Override
