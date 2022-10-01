@@ -280,22 +280,37 @@ metodene toString()og omvendtString() til å sjekke at alle pekerne er satt rikt
 
     @Override
     public T fjern(int indeks) {
-        /*
-        Lag de to fjern-metodene, dvs. T fjern(int indeks) og boolean fjern(T verdi). Den første
-skal fjerne (og returnere) verdien på posisjon indeks (som først må sjekkes).
-         */
 
-        // Sjekker indeks - må være fra og med 0 til (ikke med) antall
-        // Den første skal fjernes - indeks == 0
-            // Lagrer hode.neste i q
-            // Setter hode.neste til null
-            // Setter q.forrige til null
-            // Seter hode til å være q
-        // Den siste skal fjernes - indeks == antall - 1
-            // "Omvendt" fra den første
-        // En verdi mellom to andre skal fjernes
-            // Finner nodene før og etter den som skal fjernes med finnNode()
-        throw new UnsupportedOperationException();
+        if(!(indeks >= 0 && indeks < antall)) {     // Sjekker indeks
+            throw new IndexOutOfBoundsException("Posisjonen " + indeks + "finnes ikke i lista");
+        }
+
+        Node<T> p;
+
+        if(indeks == 0) {       // Den første skal fjernes
+            p = hode;
+            Node<T> q = hode.neste;
+            q.forrige = null;
+            hode = q;
+        }
+
+        else if(indeks == antall - 1) {     // Den siste skal fjernes
+            p = hale;
+            Node<T> q = hale.forrige;
+            q.neste = null;
+            hale = q;
+        }
+
+        else {     // En verdi mellom to andre skal fjernes
+            p = finnNode(indeks);
+            Node<T> q = finnNode(indeks - 1);
+            Node<T> r = finnNode(indeks + 1);
+            q.neste = r;
+            r.forrige = q;
+        }
+        antall--;
+        endringer++;
+        return p.verdi;
     }
 
     @Override
