@@ -260,11 +260,41 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
+        /*
+        Den andre skal
+fjerne verdi fra listen og så returnere true. Hvis det er flere forekomster av verdier det den
+første  av  dem  (fra  venstre)  som  skal  fjernes.  Hvis verdi ikke  er  i  listen,  skal  metoden
+returnere  false.  Her  skal  det  ikke  kastes  unntak  hvis verdi er null.  Metoden  skal  isteden
+returnere false. Det er logisk siden null ikke finnes i listen. Begge metodene skal være så
+ effektive som mulig. Her kan det være fristende å kode fjern(T  verdi) ved hjelp
+av indeksTil(T verdi) og fjern(int indeks). Men det fører til to gjennomganger av listen
+og er dermed ineffektivt. Derfor skal fjern(T verdi) kodes direkte.
+I begge metodene må du passe på tilfellene 1) den første fjernes, 2) den siste fjernes og 3)
+en  verdi  mellom  to  andre  fjernes.  Alle  neste-  og  forrige-pekere  må  være  korrekte  etter
+fjerningen. Variabelen antall skal også reduseres og variabelen endringer økes. Sjekk også
+tilfellet at listen blir tom etter fjerningen, blir korrekt behandlet. Bruk
+metodene toString()og omvendtString() til å sjekke at alle pekerne er satt riktig.
+         */
         throw new UnsupportedOperationException();
     }
 
     @Override
     public T fjern(int indeks) {
+        /*
+        Lag de to fjern-metodene, dvs. T fjern(int indeks) og boolean fjern(T verdi). Den første
+skal fjerne (og returnere) verdien på posisjon indeks (som først må sjekkes).
+         */
+
+        // Sjekker indeks - må være fra og med 0 til (ikke med) antall
+        // Den første skal fjernes - indeks == 0
+            // Lagrer hode.neste i q
+            // Setter hode.neste til null
+            // Setter q.forrige til null
+            // Seter hode til å være q
+        // Den siste skal fjernes - indeks == antall - 1
+            // "Omvendt" fra den første
+        // En verdi mellom to andre skal fjernes
+            // Finner nodene før og etter den som skal fjernes med finnNode()
         throw new UnsupportedOperationException();
     }
 
