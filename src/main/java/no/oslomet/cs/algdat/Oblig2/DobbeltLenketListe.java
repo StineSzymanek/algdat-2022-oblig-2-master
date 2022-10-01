@@ -260,28 +260,38 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        /*
-        Den andre skal
-fjerne verdi fra listen og så returnere true. Hvis det er flere forekomster av verdier det den
-første  av  dem  (fra  venstre)  som  skal  fjernes.  Hvis verdi ikke  er  i  listen,  skal  metoden
-returnere  false.  Her  skal  det  ikke  kastes  unntak  hvis verdi er null.  Metoden  skal  isteden
-returnere false. Det er logisk siden null ikke finnes i listen. Begge metodene skal være så
- effektive som mulig. Her kan det være fristende å kode fjern(T  verdi) ved hjelp
-av indeksTil(T verdi) og fjern(int indeks). Men det fører til to gjennomganger av listen
-og er dermed ineffektivt. Derfor skal fjern(T verdi) kodes direkte.
-I begge metodene må du passe på tilfellene 1) den første fjernes, 2) den siste fjernes og 3)
-en  verdi  mellom  to  andre  fjernes.  Alle  neste-  og  forrige-pekere  må  være  korrekte  etter
-fjerningen. Variabelen antall skal også reduseres og variabelen endringer økes. Sjekk også
-tilfellet at listen blir tom etter fjerningen, blir korrekt behandlet. Bruk
-metodene toString()og omvendtString() til å sjekke at alle pekerne er satt riktig.
-         */
+        Node<T> p = hode;
 
-        // Går gjennom listen og finner den noden hvor verdien == verdi
-            // Hvis indeksen er 0, så er det den første som fjernes
-            // Hvis indeksen er antall - 1, så er det den siste som fjernes
-            // Ellers skal en verdi mellom to andre fjernes
-        // Hvis verdien ikke er i lista, returneres false
-        throw new UnsupportedOperationException();
+        for(int indeks = 0; indeks < antall; indeks++) {    // Går gjennom listen
+            if(p.verdi.equals(verdi)) {     //  Finner riktig node
+                if(indeks == 0) {       // Den første skal fjernes
+                    if(hode.neste == null) {        // Det er kun en verdi i lista
+                        hode = hale = null;
+                    }
+                    else {
+                        Node<T> q = hode.neste;
+                        q.forrige = null;
+                        hode = q;
+                    }
+                }
+                else if(indeks == antall - 1) {     // Den siste skal fjernes
+                    Node<T> q = hale.forrige;
+                    q.neste = null;
+                    hale = q;
+                }
+                else {      // En verdi mellom to andre skal fjernes
+                    Node<T> q = finnNode(indeks - 1);
+                    Node<T> r = finnNode(indeks + 1);
+                    q.neste = r;
+                    r.forrige = q;
+                }
+                antall--;
+                endringer++;
+                return true;
+            }
+            p = p.neste;
+        }
+        return false;
     }
 
     @Override
@@ -295,9 +305,14 @@ metodene toString()og omvendtString() til å sjekke at alle pekerne er satt rikt
 
         if(indeks == 0) {       // Den første skal fjernes
             p = hode;
-            Node<T> q = hode.neste;
-            q.forrige = null;
-            hode = q;
+            if(hode.neste == null) {    // Det er kun en verdi i listen
+                hode = hale = null;
+            }
+            else {
+                Node<T> q = hode.neste;
+                q.forrige = null;
+                hode = q;
+            }
         }
 
         else if(indeks == antall - 1) {     // Den siste skal fjernes
