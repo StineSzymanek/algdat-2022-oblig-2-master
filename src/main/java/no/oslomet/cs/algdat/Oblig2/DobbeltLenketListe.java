@@ -275,6 +275,12 @@ fjerningen. Variabelen antall skal også reduseres og variabelen endringer økes
 tilfellet at listen blir tom etter fjerningen, blir korrekt behandlet. Bruk
 metodene toString()og omvendtString() til å sjekke at alle pekerne er satt riktig.
          */
+
+        // Går gjennom listen og finner den noden hvor verdien == verdi
+            // Hvis indeksen er 0, så er det den første som fjernes
+            // Hvis indeksen er antall - 1, så er det den siste som fjernes
+            // Ellers skal en verdi mellom to andre fjernes
+        // Hvis verdien ikke er i lista, returneres false
         throw new UnsupportedOperationException();
     }
 
