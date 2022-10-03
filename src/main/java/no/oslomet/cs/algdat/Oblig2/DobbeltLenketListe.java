@@ -407,6 +407,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
+            /*
+            Metoden boolean  hasNext() og konstruktøren public  DobbeltLenketListeIterator() i
+klassen DobbeltLenketListeIterator er ferdigkodet og skal ikke endres.
+a)  Lag  metoden T  next().  Den  skal  først  sjekke  om iteratorendringer er  lik endringer.
+Hvis  ikke,  kastes  en ConcurrentModificationException.  Så  en NoSuchElementException
+hvis  det  ikke  er  flere  igjen  i  listen  (dvs.  hvis hasNext() ikke  er  sann/true).  Deretter
+settes fjernOK til sann/true, verdien til denne returneres og denne flyttes til den neste node.
+             */
+
+            // Sjekk om iteratorendringer == endringer
+                // Hvis ikke -> ConcurrentModificationException
+            // Hvis hasNext() er false -> NoSuchElementException
+            // fjernOK = true
+            // denne.verdi lagres
+            // denne flyttes til neste node
+            // lagra verdi til denne returneres
             throw new UnsupportedOperationException();
         }
 
