@@ -380,7 +380,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks, false);      // Indeks sjekkes
+        return new DobbeltLenketListeIterator(indeks);      // Returnerer instans av klassen
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T> {
