@@ -4,9 +4,7 @@ package no.oslomet.cs.algdat.Oblig2;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.Objects;
+import java.util.*;
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
@@ -407,23 +405,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next() {
-            /*
-            Metoden boolean  hasNext() og konstruktøren public  DobbeltLenketListeIterator() i
-klassen DobbeltLenketListeIterator er ferdigkodet og skal ikke endres.
-a)  Lag  metoden T  next().  Den  skal  først  sjekke  om iteratorendringer er  lik endringer.
-Hvis  ikke,  kastes  en ConcurrentModificationException.  Så  en NoSuchElementException
-hvis  det  ikke  er  flere  igjen  i  listen  (dvs.  hvis hasNext() ikke  er  sann/true).  Deretter
-settes fjernOK til sann/true, verdien til denne returneres og denne flyttes til den neste node.
-             */
+            if(!(iteratorendringer == endringer)) {
+                throw new ConcurrentModificationException("Lista har blitt endret");
+            }
 
-            // Sjekk om iteratorendringer == endringer
-                // Hvis ikke -> ConcurrentModificationException
-            // Hvis hasNext() er false -> NoSuchElementException
-            // fjernOK = true
-            // denne.verdi lagres
-            // denne flyttes til neste node
-            // lagra verdi til denne returneres
-            throw new UnsupportedOperationException();
+            if(!hasNext()) {
+                throw new NoSuchElementException("Ingen noder i lista");
+            }
+
+            fjernOK = true;     // Passerer sjekkene, så nå kan man fjerne verdier
+
+            T denneVerdi = denne.verdi;     // Lagrer verdien til denne
+            denne = denne.neste;        // denne flyttes til neste node
+
+            return denneVerdi;      // lagra verdi returneres
         }
 
         @Override
