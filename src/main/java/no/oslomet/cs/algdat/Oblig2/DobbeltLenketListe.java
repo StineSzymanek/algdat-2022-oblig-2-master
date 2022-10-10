@@ -70,7 +70,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
         }
         if(q == null) {     // kun en verdi i listen som ikke er null
-            hode = hale = p;
+            hale = p;
             return;
         }
 
@@ -201,27 +201,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean inneholder(T verdi) {
-        if(indeksTil(verdi) == -1) {
-            return false;
-        }
-        return true;
+        return indeksTil(verdi) != -1;
     }
 
     private Node<T> finnNode(int indeks) {
+        Node<T> p;
         if(indeks < antall/2) {
-            Node<T> p = hode;
+            p = hode;
             for(int i = 0; i < indeks; i++) {
                 p = p.neste;
             }
-            return p;
         }
         else {
-            Node<T> p = hale;
+            p = hale;
             for(int i = antall-1; i > indeks; i--) {
                 p = p.forrige;
             }
-            return p;
         }
+        return p;
     }
 
     @Override
@@ -356,7 +353,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             p = p.neste;
 
             while (p != null) {     // tar med alle verdiene som ikke er null
-                s.append(", " + p.verdi);
+                s.append(", ").append(p.verdi);
                 p = p.neste;
             }
         }
@@ -374,7 +371,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             p = p.forrige;
 
             while (p != null) {
-                s.append(", " + p.verdi);
+                s.append(", ").append(p.verdi);
                 p = p.forrige;
             }
         }
