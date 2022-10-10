@@ -44,3 +44,8 @@ I så fall returneres en tom liste. Hvis det ikke er et tomt intervall brukes en
 å finne noden som er på posisjon "fra" og denne legges inn i listen som hode. Deretter er 
 det en til løkke som går fra etter "fra" helt til, men ikke med, posisjonen "til" og legger
 disse nodene inn i listen. Siden det er leggInn-metoden som brukes, så blir også hale satt.
+
+I oppgave 4 sin indeksTil-metode brukes en løkke til å gå gjennom listen. Hvis det finnes
+en node som har den riktige verdien så returneres den indeksen, hvis ikke returneres -1.
+inneholder(T verdi)-metoden returnerer true hvis indeksTil-metoden på den verdien ikke er -1,
+for hvis den ikke gir -1 betyr det at metoden fant en node som inneholder den verdien.
