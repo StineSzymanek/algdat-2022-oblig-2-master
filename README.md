@@ -76,3 +76,8 @@ I oppgave 8c) sin DobbeltlenketListeIterator(indeks)-konstruktør bruker vi finn
 for å sette pekeren til den tilhørende noden.
 I oppgave 8d) sin iterator(indeks) gjør vi en indekskontroll og returnerer en instans av iteratorklassen
 ved bruk av DobbeltLenketListeIterator(indeks)-kontruktøren.
+
+Warnings:
+- "fjernOK" is assigned but never accessed -> Det er greit siden man trenger den til remove() som jeg ikke har laget
+- "iteratorendringer" may be final -> Lar iteratorendringer forbli int siden den skal endres hvis man lager remove()
+- Method "sorter" + parameter "liste" + parameter "c" is never used -> Lar metoden og parameterne ligge siden vi ikke har fått beskjed om å fjerne metoder
