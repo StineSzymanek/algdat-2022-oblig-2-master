@@ -68,3 +68,11 @@ den riktige noden og fjerner den på samme måte som i den andre fjern-metoden.
 
 NB! Oppgave 7 - Jeg lagde nullstill-metoden for at testene til oppgave 8 skulle kjøre, men jeg har 
 ikke lett etter den mest effektive måten siden denne oppgaven ikke egentlig måtte gjøres.
+
+I oppagve 8a) sjekker vi at lista ikke har blitt endret og at den har noder, vi lagrer verdien og 
+flytter pekeren til neste og returnerer den lagra verdien.
+8b) sin iterator() returnerer en ny DobbeltLenketListeIterator.
+I oppgave 8c) sin DobbeltlenketListeIterator(indeks)-konstruktør bruker vi finnNode-metoden på indeks
+for å sette pekeren til den tilhørende noden.
+I oppgave 8d) sin iterator(indeks) gjør vi en indekskontroll og returnerer en instans av iteratorklassen
+ved bruk av DobbeltLenketListeIterator(indeks)-kontruktøren.
