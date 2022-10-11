@@ -49,3 +49,22 @@ I oppgave 4 sin indeksTil-metode brukes en løkke til å gå gjennom listen. Hvi
 en node som har den riktige verdien så returneres den indeksen, hvis ikke returneres -1.
 inneholder(T verdi)-metoden returnerer true hvis indeksTil-metoden på den verdien ikke er -1,
 for hvis den ikke gir -1 betyr det at metoden fant en node som inneholder den verdien.
+
+I oppgave 5 sin leggInn(indeks, verdi)-metode sjekker vi at indeksen er lovlig og oppretter
+en ny node med verdien. Hvis lista er tom settes hale og hode til den nye noden. Hvis ikke,
+og verdien skal legges først, settes hode sin forrige-peker til den nye noden og den nye noden 
+sin neste-peker settes til hodet og så gjør vi den nye noden til hodet. Hvis verdien skal legges
+bakerst skjer det omvendte bare med hale. Hvis verdien skal legges mellom to andre verdier brukes
+finnNode-metoden for å finne de nodene den nye skal legges mellom og setter pekerne riktig.
+
+I oppgave 6 sin fjern(indeks)-metode sjekker vi om indeksen er 0. Det betyr at det er den første
+verdien som skal fjernes. Da sjekker vi om hode sin neste er null, i så fall er det kun en verdi i 
+listen og hode og hale blir satt til null slik at det blir en tom liste. Hvis ikke det kun er en 
+verdi og vi skal fjerne den første så fjerner vi hode-noden og setter hode til å være den neste i
+lista. Hvis det er den siste som skal fjernes så gjør vi det samme bare for hale. Hvis en verdi 
+mellom to andre skal fjernes så finner vi de to verdiene og setter pekerne deres på hverandre slik
+at ingenting peker på den som skal fjernes. I fjern(verdi)-metoden bruker vi en løkke for å finne
+den riktige noden og fjerner den på samme måte som i den andre fjern-metoden.
+
+NB! Oppgave 7 - Jeg lagde nullstill-metoden for at testene til oppgave 8 skulle kjøre, men jeg har 
+ikke lett etter den mest effektive måten siden denne oppgaven ikke egentlig måtte gjøres.
